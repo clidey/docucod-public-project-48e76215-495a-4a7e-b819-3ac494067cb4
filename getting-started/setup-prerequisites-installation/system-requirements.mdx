@@ -3,4 +3,154 @@ title: "System Requirements"
 description: "Learn about the necessary prerequisites for running Scroll-It, including supported operating systems, minimum Node.js and npm versions, and other essential tools required to get started."
 ---
 
-*This page will automatically be generated from the codebase*
+# System Requirements for Scroll-It
+
+To ensure a smooth and successful setup of Scroll-It, it is crucial to verify your system meets the necessary prerequisites. This guide outlines the supported operating systems, minimum required versions of Node.js and npm, and essential tools needed to get started quickly and efficiently.
+
+---
+
+## 1. Supported Operating Systems
+
+Scroll-It is designed to run seamlessly on the following platforms:
+
+- **Windows** (Windows 10 or later, 64-bit)
+- **macOS** (version 10.13 High Sierra or later)
+- **Linux** (most modern distributions with 64-bit support)
+
+Ensure your OS is up to date with the latest security patches to avoid compatibility issues.
+
+## 2. Required Software Versions
+
+Scroll-It relies on Node.js and npm to manage dependencies and run the application. Confirm that your system meets these minimum version requirements:
+
+| Software | Minimum Version |
+| -------- | --------------- |
+| Node.js  | 16.0.0          |
+| npm      | 8.0.0           |
+
+### How to Check Your Versions
+Open your terminal or command prompt and run:
+
+```bash
+node -v
+npm -v
+```
+
+If your versions are below these requirements, proceed to install or update to the correct versions.
+
+## 3. Installing Node.js and npm
+
+Visit the official Node.js website to download the recommended LTS (Long-Term Support) version:
+
+- [Node.js Official Download](https://nodejs.org/en/download/)
+
+The installation includes npm automatically.
+
+### Alternative Installation Using Package Managers
+
+- **Windows:** Use [Chocolatey](https://chocolatey.org/) with the command:
+
+  ```powershell
+  choco install nodejs-lts
+  ```
+
+- **macOS:** Use [Homebrew](https://brew.sh/) with the command:
+
+  ```bash
+  brew install node@16
+  ```
+
+- **Linux:** Use your distribution's package manager, for example on Ubuntu:
+
+  ```bash
+  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  ```
+
+## 4. Additional Essential Tools
+
+To work with Scroll-It effectively, ensure the following tools are available:
+
+- **Git:** Required for cloning the Scroll-It repository and managing updates.
+
+- **Modern Web Browser:** For accessing the Scroll-It user interface, use the latest version of Chrome, Firefox, Safari, or Edge.
+
+Verify Git installation with:
+
+```bash
+git --version
+```
+
+If Git is not installed, download it from [Git Official Site](https://git-scm.com/downloads).
+
+## 5. Network Requirements
+
+Scroll-It requires internet access to fetch dependencies and interact with Reddit threads.
+
+- Ensure your firewall or network policies allow outgoing HTTPS connections on port 443.
+- Proxy environments should be configured properly, especially for npm operations.
+
+## 6. Best Practices and Tips
+
+- **Use Node Version Manager (nvm):** For flexible management of Node.js versions, install [nvm](https://github.com/nvm-sh/nvm) for Linux/macOS or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+
+- **Keep Tools Updated:** Regularly update Node.js, npm, and your browser to the latest stable versions.
+
+- **Verify Compatibility After Updates:** Always verify your environment after major upgrades to avoid unexpected issues.
+
+## 7. Troubleshooting Common System Requirement Issues
+
+<AccordionGroup title="Troubleshooting System Requirements">
+<Accordion title="Node.js or npm Not Found">
+
+If running `node -v` or `npm -v` returns 'command not found', ensure Node.js and npm are correctly installed and added to your system PATH.
+
+On Windows, restart your terminal or computer after installation.
+
+</Accordion>
+<Accordion title="Version Too Low">
+
+If your Node.js or npm versions are below the minimum required, uninstall the old versions and reinstall the supported ones. Use version managers like nvm to avoid conflicts.
+
+</Accordion>
+<Accordion title="Git Not Installed">
+
+Install Git from the official site appropriate for your OS and verify with `git --version`.
+
+If installation issues persist, check your system PATH environment variables.
+
+</Accordion>
+<Accordion title="Network Access Issues">
+
+Ensure your firewall or proxy settings allow HTTPS traffic on port 443. If behind a corporate proxy, configure proxy settings for npm and your terminal accordingly.
+
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Summary
+
+Ensuring your system meets these requirements guarantees a smooth installation and running experience with Scroll-It. Next, proceed to the [Installation](../installation) guide to set up the application.
+
+
+---
+
+## Additional Resources
+
+- [Scroll-It Installation Guide](/getting-started/setup-prerequisites-installation/installation)
+- [Troubleshooting Installation](/getting-started/setup-prerequisites-installation/troubleshooting-install)
+- [Node.js LTS Download](https://nodejs.org/en/download/)
+- [Git Official Downloads](https://git-scm.com/downloads)
+
+<Check>
+Verifying and meeting these system requirements ensures readiness for all subsequent Scroll-It setup steps and reduces installation errors.
+</Check>
+
+---
+
+## Contact & Support
+
+For further assistance, visit the Scroll-It support channels or community forums linked on the main documentation homepage.
+
+---
