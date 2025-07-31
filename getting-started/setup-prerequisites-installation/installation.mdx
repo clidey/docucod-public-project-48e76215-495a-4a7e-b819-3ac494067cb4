@@ -3,4 +3,187 @@ title: "Installation"
 description: "Step-by-step instructions for installing Scroll-It on your machine. Covers cloning the repository, installing dependencies, and setting up your environment, with notes for different platforms."
 ---
 
-*This page will automatically be generated from the codebase*
+# Installation Guide for Scroll-It
+
+This guide provides clear, step-by-step instructions to install Scroll-It on your machine. Follow these instructions to clone the repository, install dependencies, and set up your development environment, tailored for different platforms where applicable.
+
+---
+
+## 1. Prerequisites
+Before installing Scroll-It, ensure your system meets the following requirements:
+
+- **Operating System:** Windows 10 or later, macOS 10.14 or later, or a recent Linux distribution
+- **Node.js:** Version 16 or higher (recommended 18+). Download from [nodejs.org](https://nodejs.org/)
+- **Package Manager:** npm (comes with Node.js), yarn, pnpm, or bun
+- **Git:** Installed and accessible from your terminal/command prompt to clone the repository
+
+<Tip>
+Use `node -v`, `npm -v`, and `git --version` commands to verify your installations.
+</Tip>
+
+## 2. Clone the Scroll-It Repository
+Clone the project repository to your local machine:
+
+```bash
+# Clone the repository
+git clone https://github.com/modelorona/Scroll-It.git
+
+# Change directory into the cloned folder
+cd Scroll-It
+```
+
+<Tip>
+If you encounter permission or SSL certificate errors during cloning, ensure that your Git configuration is correct or try cloning over SSH if you have access.
+</Tip>
+
+## 3. Install Dependencies
+Scroll-It requires installing JavaScript dependencies managed via your chosen package manager.
+
+### Choose your package manager:
+
+| Package Manager | Install Command       |
+|-----------------|----------------------|
+| yarn            | `yarn install`       |
+| npm             | `npm install`        |
+| pnpm            | `pnpm install`       |
+| bun             | `bun install`        |
+
+### Run the install command inside the project directory:
+
+```bash
+# Using yarn
+yarn install
+
+# or npm
+npm install
+
+# or pnpm
+pnpm install
+
+# or bun
+bun install
+```
+
+<Check>
+Ensure the installation process finishes without errors. If you see warnings related to JSON import, refer to the note below.
+</Check>
+
+<Note>
+To suppress JSON import warnings during development:
+
+- Add this to your environment before starting dev server: 
+  - For Node <v21.3.0: `NODE_OPTIONS='--no-warnings'`
+  - For Node >=v21.3.0: `NODE_OPTIONS='--disable-warning=5401'`
+
+You can configure this in your package.json `dev` script for a seamless experience.
+</Note>
+
+## 4. Environment Setup
+Scroll-It is primarily developed using Vue 3 and Vuetify 3 with TypeScript support. After installing dependencies, some environment variables or configuration edits may be needed depending on your workflow.
+
+- The core plugins are automatically registered through `src/plugins/index.ts`.
+- The entry point is `src/main.ts`, which bootstraps the app and mounts it on the `#app` element.
+
+<Tip>
+No manual editing is required here for a basic install — just make sure all dependencies are installed successfully.
+</Tip>
+
+## 5. Starting the Development Server
+Once dependencies are installed, launch the development server to run Scroll-It locally.
+
+```bash
+# Example using yarn
+yarn dev
+
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# bun
+bun run dev
+```
+
+The server will start at [http://localhost:3000](http://localhost:3000), providing hot module replacement for fast, iterative development.
+
+<Check>
+Open your browser and navigate to http://localhost:3000. You should see the Scroll-It main interface loading without errors.
+</Check>
+
+<Warning>
+If the server does not start or throws errors:
+
+- Confirm your Node.js version meets requirements
+- Check for dependency issues in the terminal logs
+- See the <a href="/getting-started/setup-prerequisites-installation/troubleshooting-install">Troubleshooting Installation</a> guide.
+</Warning>
+
+## 6. Building for Production
+When ready to deploy, build an optimized production bundle:
+
+```bash
+# Yarn
+yarn build
+
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# bun
+bun run build
+```
+
+The compiled production files will be in the `dist/` folder, ready for hosting in your preferred environment.
+
+---
+
+## Troubleshooting Common Installation Issues
+
+<AccordionGroup title="Common Installation Issues">
+<Accordion title="Node.js version mismatch">
+Ensure you have Node.js version 16+ installed:
+
+```bash
+node -v
+```
+
+If the version is below 16, download and install the latest LTS version from https://nodejs.org/.
+</Accordion>
+<Accordion title="Dependency installation errors">
+Run the install command with verbose logging to find errors:
+
+```bash
+npm install --verbose
+```
+
+Check the network connectivity or proxy settings if packages fail to download.
+</Accordion>
+<Accordion title="Development server fails to start">
+Confirm port 3000 is free and not used by another application.
+
+Change the port in `vite.config.mts` under the `server.port` configuration if needed.
+</Accordion>
+<Accordion title="JSON import warnings on startup">
+Add the appropriate `NODE_OPTIONS` environment variable to suppress these warnings during development as described above.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Summary
+You have successfully installed Scroll-It, set up your environment, and started the development server. Your next step is to explore the application interface or proceed to the configuration guide for customizing your installation.
+
+---
+
+## Additional References
+- [Scroll-It GitHub Repository](https://github.com/modelorona/Scroll-It)
+- [Vuetify Documentation](https://vuetifyjs.com/)
+- [Vue 3 Documentation](https://v3.vuejs.org/)
+- [Pinia State Management](https://pinia.vuejs.org/)
+- [Vite Official Site](https://vitejs.dev/)
+- [Troubleshooting Installation](./troubleshooting-install.md)
+
+---
