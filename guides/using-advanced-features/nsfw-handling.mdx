@@ -3,4 +3,157 @@ title: "Handling NSFW Content"
 description: "A hands-on guide to how NSFW alerts work in Scroll-It, advising users on privacy, safe browsing, and user settings related to sensitive material."
 ---
 
-*This page will automatically be generated from the codebase*
+# Handling NSFW Content in Scroll-It
+
+## Overview
+This guide helps you understand how Scroll-It detects and manages NSFW (Not Safe For Work) content when browsing Reddit image threads. You will learn how NSFW alerts function, how to safely manage sensitive content, and configure your user preferences to control what you see.
+
+## Prerequisites
+- Basic familiarity with Scroll-It’s core interface and browsing functionalities.
+- Access to Scroll-It via a supported web browser.
+- A Reddit subreddit search performed that may include NSFW content.
+
+## What to Expect
+By the end of this guide, you will be able to:
+- Recognize NSFW alerts when they appear.
+- Understand how Scroll-It safeguards your privacy and browsing experience.
+- Manage your consent preferences to view or block NSFW material.
+- Handle common scenarios where NSFW content might unexpectedly appear.
+
+---
+
+## How NSFW Alerts Work
+Scroll-It automatically scans Reddit posts fetched during your search. If any posts marked as NSFW (`over_18` flagged) are detected and you have not consented to view such content during your session, Scroll-It pauses image display and shows a clear NSFW alert prompt.
+
+### The NSFW Alert Prompt
+- You will see a warning banner indicating that your search returned NSFW content.
+- The alert provides two options:
+  - **Accept**: Consents to viewing NSFW content during this session.
+  - **Decline**: Blocks NSFW content from appearing in your current browsing session.
+
+### Session Persistence
+Your consent choice is saved in your browser session storage to avoid repetitive prompts. If accepted, NSFW content will continue to appear unobstructed. If declined, NSFW images are filtered out.
+
+<Check>
+If you switch subreddits or refresh the page, the NSFW consent status will persist within the session, respecting your last choice.
+</Check>
+
+## Managing NSFW Content Step-by-Step
+
+### Step 1: Recognizing NSFW Content
+- After searching a subreddit, if any images are flagged NSFW, the alert dialog will appear.
+- The alert is prominently displayed with a warning icon for immediate visibility.
+
+### Step 2: Making Your Choice
+- Click the ✔️ checkmark button to accept and continue browsing with NSFW content.
+- Click the ❌ cancel button to decline and filter out NSFW posts.
+- The dialog automatically closes after you make your choice, resuming normal browsing.
+
+### Step 3: Browsing with Your Preference
+- If accepted: NSFW posts display side by side with safe-for-work images.
+- If declined: All NSFW posts are hidden from the image grid.
+
+### Step 4: Changing Your Decision
+- To revisit your NSFW consent, clear your session storage or reload the app in a new session.
+- Currently, there is no permanent toggle; consent is session-based to protect privacy and prevent accidental exposure.
+
+---
+
+## Practical Tips and Best Practices
+- **Privacy First**: NSFW consent is session-bound and not permanently stored, ensuring privacy on public or shared devices.
+- **Be Mindful When Accepting**: Accepting NSFW content exposes you to all materials marked accordingly in the subreddit you browse.
+- **Safe Browsing on Shared Devices**: Decline NSFW and close the browser session to keep sensitive content hidden.
+- **Refresh to Reset**: If you accidentally accept NSFW or want to change your choice, closing and reopening the browser or opening a private browsing window resets the consent.
+
+## Common Pitfalls and Troubleshooting
+
+<AccordionGroup title="Troubleshooting NSFW Content Alerts">
+<Accordion title="The NSFW alert does not appear even though NSFW content is visible">
+If you previously accepted NSFW content, the session flag stays active and the alert will not reappear. To reset consent, clear session storage or use a new browser session.
+</Accordion>
+<Accordion title="NSFW content still appears after declining">
+Scroll-It filters NSFW posts based on the consent flag. Ensure you declined the alert properly and that your browser session is intact. Incognito or private mode may behave differently depending on browser settings.
+</Accordion>
+<Accordion title="Consent prompt appears repeatedly during a session">
+This is unexpected behavior. Try refreshing the page, clearing cookies and site data, or using a different browser. If the issue persists, check your network stability as it might affect Reddit data fetching.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## Example Scenario
+Imagine you search for images in the subreddit `r/wallpapers`. Scroll-It fetches images but detects some marked NSFW. The warning alert appears, asking your consent. You choose to decline — NSFW images are filtered out. You continue scrolling safely without unexpected sensitive content. Later, if you decide to view NSFW images, refreshing the session or opening Scroll-It anew will prompt the consent alert again.
+
+---
+
+## Technical Behavior (Background)
+- Scroll-It checks the `over_18` flag on Reddit posts when loading images.
+- If any NSFW posts exist and no session consent is given, the NSFW alert is shown.
+- User responses trigger updates to sessionStorage key `agreedToNSFW` (`'true'` or `'false'`).
+- The image grid respects this flag by filtering or showing NSFW content accordingly.
+
+---
+
+## Summary
+Scroll-It prioritizes user control and privacy regarding sensitive content. The NSFW alert system empowers you to browse confidently, avoiding accidental exposure. By understanding these alerts and your session preferences, you maintain a safer and more comfortable browsing experience.
+
+---
+
+## Next Steps
+- Review the [Launching Scroll-It and Browsing Reddit Threads guide](/guides/getting-started/launch-and-connect) to get started with basic navigation and search.
+- Explore [Customizing Scrolling Speed and Behavior](/guides/using-advanced-features/customizing-scrolling) to tailor your viewing experience.
+
+## Additional Resources
+- [Scroll-It Core Interface Overview](/guides/getting-started/core-interface)
+- [Privacy and Safety Tips](/overview/introduction-value/value-proposition-use-cases) (general best practices)
+
+---
+
+For full technical details or to contribute, visit the [Scroll-It GitHub repository](https://github.com/modelorona/Scroll-It).
+
+---
+
+## Appendix: NSFW Alert Component Example
+```vue
+<template>
+  <v-alert
+    v-model="isOpen"
+    dense
+    icon="mdi-alert-octagon"
+    prominent
+    text
+    type="warning"
+  >
+    <v-row align="center">
+      <v-col class="grow">Your search returned some NSFW (Not Safe For Work) content. Would you like to see this content?</v-col>
+    </v-row>
+    <template #append>
+      <v-btn icon small @click="decline">
+        <v-icon>mdi-cancel</v-icon>
+      </v-btn>
+      <v-btn icon small @click="accept">
+        <v-icon>mdi-check</v-icon>
+      </v-btn>
+    </template>
+  </v-alert>
+</template>
+
+<script setup>
+const emit = defineEmits(['update:isOpen', 'accept', 'decline'])
+const isOpen = ref(false)
+
+const accept = () => {
+  isOpen.value = false
+  emit('accept')
+}
+
+const decline = () => {
+  isOpen.value = false
+  emit('decline')
+}
+</script>
+```
+
+<Info>
+This example highlights the minimal but effective NSFW alert UI and logic that controls consent prompting.
+</Info>
