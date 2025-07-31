@@ -3,4 +3,146 @@ title: "First Run & Quick Validation"
 description: "Launch Scroll-It for the first time and validate that everything is working. Includes expected outputs, tips for accessing the web UI, and fast checks to ensure Reddit image threads auto-scroll as designed."
 ---
 
-*This page will automatically be generated from the codebase*
+# First Run & Quick Validation
+
+Welcome to your first experience with Scroll-It. This guide walks you through launching the application, accessing the web interface, and performing quick validation to confirm the auto-scroll feature on Reddit image threads is functioning correctly.
+
+---
+
+## 1. Launching Scroll-It for the First Time
+
+Getting started with Scroll-It is seamless once your environment is set based on the previous configuration and installation steps.
+
+### Step 1: Start the Scroll-It Application
+
+- Open your terminal or command prompt.
+- Navigate to your project directory where Scroll-It is installed.
+- Run the development server using your package manager, for example:
+
+```bash
+# Using yarn
+yarn dev
+
+# Or using npm
+npm run dev
+```
+
+- Wait for the console message confirming the server is running. You should see an output similar to:
+
+```
+Listening on http://localhost:3000
+```
+
+<Tip>
+If you encounter JSON import warnings, consider setting the environment variable:
+
+`NODE_OPTIONS='--no-warnings'` 
+
+or, for Node v21.3.0 and above, 
+
+`NODE_OPTIONS='--disable-warning=5401'`.
+</Tip>
+
+### Step 2: Access the Web Interface
+
+- Open your preferred web browser.
+- Navigate to [http://localhost:3000](http://localhost:3000).
+- The Scroll-It interface will load within the Vuetify framework, featuring a clean, responsive design ready for use.
+
+<Note>
+Ensure that your firewall or network settings allow connections to port 3000.
+</Note>
+
+## 2. Quick Validation Checks
+
+Once the UI loads, follow these steps to confirm Scroll-It’s core functionality.
+
+### Step 1: Load a Reddit Image Thread
+
+- In the web interface, navigate or provide the URL of a Reddit thread containing images that you want to auto-scroll.
+- Confirm the page loads the thread images correctly.
+
+### Step 2: Enable Auto-Scroll
+
+- Activate the auto-scroll feature using the interface toggle or button available on the main page.
+- The viewport should start scrolling smoothly through the images without manual intervention.
+
+<Check>
+Observe continuous, seamless scrolling behavior flowing through images in the thread.
+</Check>
+
+### Step 3: Validate Scroll Behavior
+
+- Try pausing and restarting the scrolling.
+- Adjust any speed settings if available (refer to advanced guides).
+- Confirm scrolling resumes accurately and without stutter.
+
+### Step 4: Monitor Console for Errors
+
+- Open your browser’s developer console (F12 or Cmd+Opt+I).
+- Verify there are no runtime errors or warnings related to dynamic imports or scripting failures.
+
+<Warning>
+If errors appear regarding failed module imports, try refreshing the page. Scroll-It includes a retry mechanism that reloads the page to fix dynamic import errors automatically.
+</Warning>
+
+## 3. Practical Tips for First Run Success
+
+- **Browser Compatibility:** Use modern browsers like Chrome, Firefox, or Edge for optimal functioning.
+- **Network Access:** Ensure uninterrupted internet access for Reddit threads to load correctly.
+- **Performance:** For best performance, use on machines meeting standard development specifications (refer to System Requirements).
+
+<Tip>
+If auto-scroll does not start automatically, confirm the auto-scroll toggle is activated in the UI.
+</Tip>
+
+## 4. Troubleshooting Common First Run Issues
+
+<Accordion title="Page Does Not Load at http://localhost:3000">
+- Verify the development server is running without errors.
+- Confirm you ran `yarn dev` or `npm run dev` in the correct directory.
+- Check that port 3000 is not blocked or used by another application.
+</Accordion>
+
+<Accordion title="Auto-Scroll Fails to Activate or Stalls">
+- Refresh the web page to reset the app state.
+- Check for console errors related to loading scripts or scrolling logic.
+- Ensure you have loaded a valid Reddit image thread URL.
+- Refer to advanced configuration to adjust scrolling parameters.
+</Accordion>
+
+<Accordion title="Dynamic Import Errors in Console">
+- Scroll-It automatically attempts a page reload when detecting dynamic import errors.
+- If errors persist after reload, clear localStorage for the site and try again.
+</Accordion>
+
+## 5. What’s Next?
+
+With Scroll-It running and validated, explore these next actions:
+
+- Customize scrolling speed and behavior in the Settings panel. See [Customizing Scrolling Speed and Behavior](/guides/using-advanced-features/customizing-scrolling).
+- Learn how to safely handle NSFW content for browsing. See [Handling NSFW Content](/guides/using-advanced-features/nsfw-handling).
+- Optimize your experience on mobile devices. See [Mobile Browsing Best Practices](/guides/using-advanced-features/mobile-optimization).
+
+For more details on startup and feature use, check the [Launching Scroll-It and Browsing Reddit Threads](/guides/getting-started/launch-and-connect) guide.
+
+---
+
+## Summary
+
+| Step           | Action                                   | Expected Outcome                                |
+|----------------|------------------------------------------|-----------------------------------------------|
+| Launch server  | Run `yarn dev` or `npm run dev`           | Server starts, listening on http://localhost:3000 |
+| Access UI      | Open browser at http://localhost:3000     | Scroll-It web app interface loads               |
+| Load Reddit Thread | Enter Reddit image thread URL             | Images load successfully                         |
+| Enable Auto-Scroll | Turn on auto-scroll toggle                  | Images scroll smoothly and continuously          |
+
+<Check>
+You’re ready to benefit from Scroll-It’s streamlined browsing experience on Reddit image threads.
+</Check>
+
+---
+
+For support or more advanced troubleshooting, visit the [Troubleshooting Installation](../../getting-started/setup-prerequisites-installation/troubleshooting-install) page.
+
+---
