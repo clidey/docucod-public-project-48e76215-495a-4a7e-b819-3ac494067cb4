@@ -1,0 +1,211 @@
+---
+title: "Troubleshooting Installation"
+description: "Find solutions to common setup pitfalls, such as version mismatches or missing dependencies, to ensure a smooth installation process."
+---
+
+# Troubleshooting Installation
+
+Ensure your Scroll-It installation is seamless by addressing common setup pitfalls promptly. This guide helps you identify and fix version mismatches, missing dependencies, and other frequent issues preventing a smooth installation.
+
+---
+
+## 1. Common Installation Issues and Solutions
+
+### a. Node.js Version Mismatch
+
+Scroll-It requires a compatible Node.js version to function correctly.
+
+**How to check your Node.js version:**
+```bash
+node -v
+```
+
+**Recommended Version:**
+- Use Node.js version 16.x or later for best compatibility.
+
+**Solution if version is incompatible:**
+- Upgrade or switch Node versions using [nvm](https://github.com/nvm-sh/nvm):
+
+```bash
+nvm install 18
+nvm use 18
+```
+
+<Tip>
+Using Node.js versions less than 16 can lead to build errors or runtime failures.
+</Tip>
+
+---
+
+### b. Missing or Incomplete Dependencies
+
+After cloning the repository, dependencies must be installed correctly.
+
+**Verify installation:**
+- Run the package manager's install command in the project root.
+
+```bash
+# Using npm
+npm install
+
+# Using yarn
+yarn install
+
+# Using pnpm
+pnpm install
+```
+
+If you encounter errors during installation:
+- Delete the `node_modules` folder and the lock file (`package-lock.json` or `yarn.lock`) and run install again.
+- Ensure you have network access and no firewall restrictions blocking package downloads.
+
+<Tip>
+For a clean slate, use:
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+</Tip>
+
+---
+
+### c. Build Failures During Installation
+
+Build problems often relate to incompatible environments or missing build tools.
+
+**Key checks:**
+- Ensure your system meets minimal requirements for Vite, Vue 3, and Vuetify.
+- Ensure you have up-to-date compilers and build utilities.
+
+**Common error example:**
+- Errors referencing `esbuild` or TypeScript issues.
+
+**How to fix:**
+- Update your package manager to the latest version.
+- Clean cache and try reinstalling:
+  ```bash
+  npm cache clean --force
+  npm install
+  ```
+- Install missing build tools globally if applicable (e.g., `typescript` or `esbuild`).
+
+<Warning>
+Avoid skipping error messages during install; they often pinpoint missing dependencies or unsupported versions.
+</Warning>
+
+---
+
+### d. Environment & Configuration Errors
+
+Some setups require environment variables or config files.
+
+**Scroll-It specific notes:**
+- No special environment variables are needed for installation.
+- Ensure your project config files (e.g., `tsconfig.json`, `vite.config.mts`) remain unaltered unless explicitly required.
+
+<Tip>
+If you modified config files and encounter errors, try reverting to the original version.
+</Tip>
+
+---
+
+## 2. Verifying Installation Success
+
+After installation, verify the application launches correctly:
+
+### Starting the Development Server
+
+Run:
+```bash
+npm run dev
+```
+Check output for messages like:
+```
+  VITE vX.Y.Z  ready in XXXX ms
+  ➜  Local:   http://localhost:3000/
+```
+
+Open http://localhost:3000 in your browser.
+
+### Expected Behavior
+- The Scroll-It UI should load displaying main interface without error messages.
+
+If you encounter runtime errors:
+- Review console logs for missing components or failed imports.
+- Check browser dev tools for any network or JavaScript errors.
+
+---
+
+## 3. Troubleshooting Tips
+
+<AccordionGroup title="Troubleshooting Tips">
+<Accordion title="Dependency Conflicts">
+If you observe version conflicts or peer dependency warnings, consider using `pnpm` or forcing resolutions in `package.json`.
+</Accordion>
+<Accordion title="Dynamic Import Errors">
+Some dynamic import errors may occur. These are usually resolved by refreshing the page once. If persistent, try clearing cache and local storage.
+</Accordion>
+<Accordion title="Port Conflicts">
+If port 3000 is in use, specify a different port in `vite.config.mts` under the `server.port` setting.
+</Accordion>
+<Accordion title="Permission Issues on Unix Systems">
+Use `sudo` cautiously. Prefer fixing user permissions or using Node Version Manager (nvm) to avoid permission errors.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## 4. When to Seek Help
+
+If you have exhausted the troubleshooting steps:
+- Visit the official [Vuetify Documentation](https://vuetifyjs.com/) for dependency issues.
+- Check Vite and Vue GitHub issues for compatibility problems.
+- Refer to your package manager’s troubleshooting guides (npm, yarn, pnpm).
+- Review open issues or report new ones at the [Scroll-It GitHub repository](https://github.com/modelorona/Scroll-It/issues).
+
+<Tip>
+Include detailed error logs and system info when requesting support to expedite problem resolution.
+</Tip>
+
+---
+
+## Summary
+Addressing common installation pitfalls ensures you start with a functional Scroll-It environment. Follow Node version requirements, carefully install dependencies, and verify your build succeeds before launching. Use the outlined tips and common fixes if problems arise.
+
+
+---
+
+### Related Documentation
+- [System Requirements](/getting-started/setup-prerequisites-installation/system-requirements)
+- [Installation Guide](/getting-started/setup-prerequisites-installation/installation)
+- [First Run & Quick Validation](/getting-started/configuration-and-first-run/first-run-validation)
+
+
+---
+
+## Quick Reference Table of Common Issues
+
+| Issue                  | Cause                               | Solution                            |
+|------------------------|-----------------------------------|-----------------------------------|
+| Node.js Version        | Too old or incompatible Node.js    | Upgrade Node.js >=16 via nvm     |
+| Dependencies Missing   | Interrupted or incomplete install  | Delete node_modules and reinstall |
+| Build Errors           | Missing build tools/versions       | Clear cache, update tools, reinstall |
+| Dynamic Import Errors  | Caching or partial reload issues  | Refresh page, clear cache/localStorage |
+| Port In Use            | 3000 port conflict                 | Change port in vite.config.mts    |
+
+
+
+---
+
+## Example: Clearing Cache and Reinstalling Dependencies
+
+```bash
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+npm run dev
+```
+
+This restores a clean installation state and often resolves dependency or build failures.
+
+---

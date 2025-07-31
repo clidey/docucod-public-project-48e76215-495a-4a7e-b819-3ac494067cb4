@@ -1,0 +1,156 @@
+---
+title: "Launching Scroll-It and Browsing Reddit Threads"
+description: "A step-by-step tutorial on starting the app, entering Reddit threads, and activating the auto-scroller. Covers the initial user flow from first load to seeing images rendered and scrolled automatically."
+---
+
+# Launching Scroll-It and Browsing Reddit Threads
+
+Welcome to your step-by-step tutorial to start using Scroll-It effectively! This guide will lead you through the initial user flow from launching the app, entering Reddit threads, to activating the auto-scroller — getting you quickly from first load to enjoying automatically scrolled, image-rich Reddit browsing.
+
+---
+
+## Workflow Overview
+
+### What You Will Achieve
+By following this guide, you will learn how to:
+- Start the Scroll-It app correctly
+- Navigate to Reddit threads inside the app
+- Activate and use the auto-scrolling feature
+- View and enjoy images rendered automatically as the app scrolls
+
+### Prerequisites
+Before starting, make sure:
+- Scroll-It is installed and running on your system
+- Your network connection allows access to Reddit
+- You have basic knowledge of browsing Reddit threads
+
+### Expected Outcome
+By the end, you will seamlessly browse Reddit threads inside Scroll-It with an engaging automatic scroll experience that renders images dynamically and continuously.
+
+### Time Estimate & Difficulty
+- Time to complete: Approximately 5-10 minutes
+- Skill level: Beginner-friendly
+
+---
+
+## Step-by-Step Instructions
+
+### Step 1: Launch the Scroll-It Application
+1. Open your terminal or command prompt.
+2. Navigate to the Scroll-It project directory.
+3. Start the development server using the command:
+
+```bash
+yarn dev
+```
+
+(replace with `npm run dev`, `pnpm dev`, or `bun dev` depending on your package manager)
+
+4. Once started, open your web browser to [http://localhost:3000](http://localhost:3000).
+
+**Expected Result:** The Scroll-It app loads with the main interface ready for input.
+
+---
+
+### Step 2: Enter a Reddit Thread URL
+1. Locate the input field or interface element prompting you to enter a Reddit thread URL.
+2. Enter a full Reddit thread URL. For example:
+
+```
+https://www.reddit.com/r/pics/comments/abc123/example_thread/
+```
+
+3. Submit the URL by pressing Enter or clicking the associated button.
+
+**Expected Result:** Scroll-It connects to the specified Reddit thread and begins loading content.
+
+**Tip:** Use threads rich with images to maximize the app’s visual and scrolling benefits.
+
+---
+
+### Step 3: Activate the Auto-Scroller
+1. Find the control or toggle labeled "Auto-Scroller" or similar.
+2. Click or switch it on to start the automatic smooth scrolling.
+
+**Expected Result:** The content begins to scroll automatically, bringing new images into view as you watch.
+
+**Decision Point:** If auto-scrolling is too fast or slow, consider later customizing scroll speed via the settings (covered in advanced guides).
+
+---
+
+### Step 4: Enjoy Images Rendered and Scrolled Automatically
+- Watch images load dynamically in your feed as the auto-scroller moves through the thread.
+- Scroll-It renders images inline to provide an immersive browsing experience without manual scrolling.
+
+**Expected Result:** A hands-free Reddit thread browsing experience with images appearing smoothly as you progress.
+
+---
+
+## Practical Examples
+
+Here is a typical user flow example you can try immediately:
+
+```plaintext
+User launches Scroll-It at http://localhost:3000
+User inputs "https://www.reddit.com/r/aww/comments/xyz789/cute_puppy_pictures/"
+User activates the auto-scroller toggle
+User watches the app scroll automatically through image thumbnails and full images until reaching the end
+```
+
+This example illustrates how Scroll-It transforms Reddit browsing into an effortless slideshow of images.
+
+---
+
+## Troubleshooting & Tips
+
+<AccordionGroup title="Common Issues and Solutions">
+<Accordion title="The App Does Not Load After Launch">
+- Confirm the development server is running without errors in the terminal.
+- Verify your browser is pointed to http://localhost:3000.
+- Check network connectivity and firewall settings.
+</Accordion>
+<Accordion title="Reddit Feed Does Not Appear or Load">
+- Ensure the Reddit thread URL is correctly entered and accessible.
+- Confirm that Reddit is not blocking requests due to API or CORS restrictions.
+- Try refreshing the page and re-entering the URL.
+</Accordion>
+<Accordion title="Auto-Scroller Does Not Start or Stops Unexpectedly">
+- Verify the auto-scroller toggle is switched on.
+- Reload the page and re-activate the auto-scroller.
+- Check console logs for errors that might indicate loading or rendering issues.
+</Accordion>
+</AccordionGroup>
+
+<Tip>
+For the smoothest experience, use Reddit threads with many images and avoid extremely long threads the first time.
+</Tip>
+
+<Warning>
+Auto-scrolling may be resource intensive on very long threads or slower machines. Pause or adjust scroll speed if performance lags.
+</Warning>
+
+---
+
+## Next Steps & Related Guides
+
+- After mastering launching and auto-scrolling, explore the **Customizing Scrolling Speed and Behavior** guide to tailor scroll settings.
+- To learn about managing sensitive material, see the **Handling NSFW Content** guide.
+- For browsing on mobile devices with optimal performance, refer to the **Mobile Browsing Best Practices**.
+
+---
+
+## Summary
+This guide is your comprehensive starting point to launch Scroll-It, enter Reddit threads, and experience automatic scrolling with dynamic image rendering. Follow the simple steps described here to shift from manual to automated Reddit browsing effortlessly.
+
+Explore the related advanced guides to customize and optimize your Scroll-It experience further.
+
+---
+
+## Additional Resources
+- [Scroll-It GitHub Repository](https://github.com/modelorona/Scroll-It) for source code and issue tracking.
+- Vuetify Framework documentation for understanding the UI components used: https://vuetifyjs.com/
+- Reddit official site for thread URLs: https://www.reddit.com/
+
+---
+
+Happy scrolling with Scroll-It!

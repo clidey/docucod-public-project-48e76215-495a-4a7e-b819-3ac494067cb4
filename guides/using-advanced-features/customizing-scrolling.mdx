@@ -1,0 +1,152 @@
+---
+title: "Customizing Scrolling Speed and Behavior"
+description: "Learn how to adjust auto-scrolling parameters for a smoother experience, including speed, pause/resume, and edge cases where manual intervention may be helpful."
+---
+
+# Customizing Scrolling Speed and Behavior
+
+Optimize your experience in Scroll-It by adjusting auto-scrolling parameters, managing pause and resume actions, and learning how to handle scenarios where manual control is necessary. This guide helps you take full control of how images flow in your Reddit image thread slideshow for a smoother and more enjoyable browsing session.
+
+---
+
+## 1. Understanding Scrolling in Scroll-It
+
+Scroll-It automatically cycles through Reddit image posts in a seamless slideshow. By default, each image is displayed for 5 seconds before moving to the next. However, customizing these parameters empowers you to tailor the viewing rhythm to your preferences.
+
+### What You Will Achieve:
+- Adjust scrolling speed to slow down or speed up the slideshow.
+- Learn to pause and resume the slideshow manually.
+- Recognize when manual intervention is useful for smoother navigation.
+
+> Scroll-It’s auto-scrolling is designed with simplicity and fluidity in mind, letting you enjoy Reddit image threads hands-free once set up.
+
+---
+
+## 2. Prerequisites
+
+Before customizing scrolling behavior, ensure:
+- You have Scroll-It running and are viewing a subreddit’s image thread.
+- The slideshow feature has been activated by clicking the **'Start slideshow'** button.
+- You understand basic slideshow controls described in the **Image Overlay** interface.
+
+---
+
+## 3. How to Adjust Scrolling Speed
+
+The default interval between images is 5 seconds. Although Scroll-It does not currently expose a user interface slider or input for speed adjustment, speed customization can be achieved by editing the source code. 
+
+### For Developers or Advanced Users:
+
+1. Open the `ScrollContent.vue` component file.
+2. Locate the variable controlling interval time:
+
+```javascript
+const slideshowIntervalTime = 5000 // milliseconds
+```
+3. Change the value to your desired speed. For example, for a faster slideshow with 3 seconds per image:
+
+```javascript
+const slideshowIntervalTime = 3000
+```
+4. Save your changes and reload the application.
+
+> Note: Values below 1000 (1 second) are not recommended as they may cause rapid flickering and poor user experience.
+
+<Tip>
+If you are not comfortable editing the source code directly, consider submitting a feature request or check the GitHub repository for upcoming UI speed controls.
+</Tip>
+
+---
+
+## 4. Pausing and Resuming the Slideshow
+
+Sometimes you want to examine an image more closely or take a break from auto-scrolling.
+
+### Pause and Resume Controls:
+- **Manual Pause:**
+  - When viewing an image in the overlay, click the **Pause Slideshow** button.
+  - Alternatively, press the spacebar key to toggle play/pause anytime while the overlay is active.
+
+- **Resume:** Click the same button when labeled **Start Slideshow** or press the spacebar again.
+
+<Tip>
+The spacebar toggle is quick and accessible, making it easy to control the slideshow without touching the mouse.
+</Tip>
+
+---
+
+## 5. Handling Edge Cases and Manual Intervention
+
+### When to Use Manual Navigation:
+- **Rapid image changes:** If the auto-scroll feels too fast or slow but you haven’t adjusted the speed in source, use the **Next** and **Previous** buttons to move at your own pace.
+- **NSFW Content:** When you encounter content requiring confirmation, scrolling will pause to respect user choices.
+- **Loading delays:** Sometimes images may take time to load. Pausing lets you avoid skipping content unintentionally.
+
+### Navigating Manually:
+- In the image overlay dialog, use:
+  - **Previous** and **Next** buttons to navigate images directly.
+  - Keyboard arrows **←** and **→** for quick control.
+  - Clicking the image opens the respective Reddit post if you want to engage deeper.
+
+<Tip>
+Frequent manual navigation resets the slideshow position and will fetch new images as you approach the end of loaded posts, ensuring you always see fresh content.
+</Tip>
+
+---
+
+## 6. Best Practices for Smooth Scrolling Experience
+
+- Start watching on a stable internet connection to prevent delays in image loading.
+- Use the pause control when you want to focus on an image or avoid missing details.
+- Adjust speed in the source code if watching many images in succession tires your eyes.
+- Utilize keyboard shortcuts for fluid control without interrupting your flow.
+- Be mindful that lowering interval times excessively may reduce the viewing experience.
+
+---
+
+## 7. Troubleshooting Scrolling Behavior
+
+<AccordionGroup title="Common Issues When Customizing Scrolling">
+  <Accordion title="Slideshow does not start when clicking Start slideshow">
+    Ensure you have at least one image loaded. Scroll-It fetches images from Reddit only after you enter a valid subreddit and execute a search.
+  </Accordion>
+  <Accordion title="Images flicker or load slowly during auto-scroll">
+    This often indicates a slow internet connection or that images took longer to load from Reddit. Try pausing the slideshow momentarily while images cache.
+  </Accordion>
+  <Accordion title="Speed adjustments seem ineffective">
+    Remember, speed is defined in `ScrollContent.vue` and not yet adjustable via UI controls. Make sure you updated the correct variable and restarted the app.
+  </Accordion>
+  <Accordion title="Keyboard shortcuts not responding">
+    Focus must be on the image overlay dialog for keyboard controls to work. If shortcuts fail, click the overlay or reopen it.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 8. Summary
+
+By following this guide, you can tailor the scrolling speed and behavior of the Scroll-It app to your needs. Use the pause/resume buttons and keyboard shortcuts for intuitive control, and understand when manual navigation improves your experience. For developers, adjusting the slideshow interval time in the source offers the ultimate customization.
+
+---
+
+## 9. Next Steps & Related Content
+
+- Learn about [Handling NSFW Content](/guides/using-advanced-features/nsfw-handling) to manage sensitive images during scrolling.
+- Explore [Mobile Browsing Best Practices](/guides/using-advanced-features/mobile-optimization) for smoother scrolling on mobile devices.
+- Review the [Core Interface](/guides/getting-started/core-interface) guide to understand the layout and controls of Scroll-It.
+
+---
+
+## 10. Additional Resources
+
+- GitHub Repository: [Scroll-It Source Code](https://github.com/modelorona/Scroll-It)
+- Vue.js Official Site: https://vuejs.org/
+- Vuetify Framework: https://vuetifyjs.com/
+
+<Check>
+Take advantage of keyboard shortcuts: Spacebar to pause/resume, arrow keys to navigate, and Esc to close the image overlay.
+</Check>
+
+---
+
+Thank you for choosing Scroll-It. Enjoy effortless and customizable Reddit image scrolling!
